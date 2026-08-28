@@ -86,30 +86,28 @@ export default function BookingCard() {
               ))}
             </div>
 
-            <div className="flex items-center gap-2.5">
-              <div className="grid grid-cols-2 gap-2.5 flex-1">
-                <div className={rowCls}>
-                  <Calendar className="w-4 h-4 text-white/30 shrink-0" />
-                  <label htmlFor="hero-date" className="sr-only">Date</label>
-                  <input id="hero-date" type="date" value={date}
-                    min={(() => { const n = new Date(); return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,"0")}-${String(n.getDate()).padStart(2,"0")}`; })()}
-                    onChange={(e) => setDate(e.target.value)} className={`${inputCls} dark-picker ${!date ? "text-white/35" : ""}`} dir="ltr" />
-                </div>
-                <div className={rowCls}>
-                  <Clock className="w-4 h-4 text-white/30 shrink-0" />
-                  <label htmlFor="hero-time" className="sr-only">Time</label>
-                  <input id="hero-time" type="time" value={time} onChange={(e) => setTime(e.target.value)} className={`${inputCls} dark-picker ${!time ? "text-white/35" : ""}`} dir="ltr" />
-                </div>
+            <div className="grid grid-cols-2 gap-2.5">
+              <div className={rowCls}>
+                <Calendar className="w-4 h-4 text-white/30 shrink-0" />
+                <label htmlFor="hero-date" className="sr-only">Date</label>
+                <input id="hero-date" type="date" value={date}
+                  min={(() => { const n = new Date(); return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,"0")}-${String(n.getDate()).padStart(2,"0")}`; })()}
+                  onChange={(e) => setDate(e.target.value)} className={`${inputCls} dark-picker ${!date ? "text-white/35" : ""}`} dir="ltr" />
               </div>
-              <button type="button" onClick={() => {
-                const now = new Date();
-                setDate(`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")}`);
-                setTime(now.toTimeString().slice(0, 5));
-              }}
-                className="shrink-0 bg-amber/20 hover:bg-amber/30 border border-amber/40 text-amber text-xs font-bold rounded-xl px-3 py-3 transition-all cursor-pointer">
-                {t("Now", "الآن")}
-              </button>
+              <div className={rowCls}>
+                <Clock className="w-4 h-4 text-white/30 shrink-0" />
+                <label htmlFor="hero-time" className="sr-only">Time</label>
+                <input id="hero-time" type="time" value={time} onChange={(e) => setTime(e.target.value)} className={`${inputCls} dark-picker ${!time ? "text-white/35" : ""}`} dir="ltr" />
+              </div>
             </div>
+            <button type="button" onClick={() => {
+              const now = new Date();
+              setDate(`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")}`);
+              setTime(now.toTimeString().slice(0, 5));
+            }}
+              className="w-full bg-amber/20 hover:bg-amber/30 border border-amber/40 text-amber text-xs font-bold rounded-xl px-3 py-3 transition-all cursor-pointer">
+              {t("Now", "الآن")}
+            </button>
 
             <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={handleSubmit}
               className="w-full mt-4 py-4 rounded-xl btn-premium text-charcoal font-bold text-sm flex items-center justify-center gap-2 cursor-pointer">

@@ -114,7 +114,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7 }}
-              className="w-full sm:w-[420px] lg:w-[400px] shrink-0"
+              className="w-full sm:w-[480px] lg:w-[460px] shrink-0"
             >
               <BookingCard />
             </motion.div>
